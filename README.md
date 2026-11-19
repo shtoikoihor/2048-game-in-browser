@@ -82,11 +82,4 @@ npm test       # run tests
 
 ---
 
-## ✅ README Checklist
 
-- [x] Project name
-- [x] Live preview link
-- [x] Design reference
-- [x] Technologies used
-- [x] Getting started
-- [x] Features
