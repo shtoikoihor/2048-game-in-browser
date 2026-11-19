@@ -1,4 +1,3 @@
-'use strict';
 
 import Game from '../modules/Game.class.js';
 
@@ -8,6 +7,7 @@ const game = new Game();
 const messageLose = document.querySelector('.message-lose');
 const messageWin = document.querySelector('.message-win');
 const messageStart = document.querySelector('.message-start');
+const arrowKeys = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'];
 
 const startButton = document.querySelector('.button.start');
 
@@ -17,6 +17,7 @@ startButton.addEventListener('click', (e) => {
     startButton.textContent = 'restart';
     startButton.classList.remove('start');
     startButton.classList.add('restart');
+    messageStart.classList.add('hidden');
   } else {
     game.restart();
     startButton.textContent = 'start';
@@ -27,7 +28,6 @@ startButton.addEventListener('click', (e) => {
     messageLose.classList.add('hidden');
   }
 
-  messageStart.classList.add('hidden');
   renderBoard();
 });
 
@@ -50,9 +50,9 @@ function renderBoard() {
       }
 
       if (
-        game.lastTile &&
-        rowIndex === game.lastTile.row &&
-        colIndex === game.lastTile.col
+        game.lastTile
+        && rowIndex === game.lastTile.row
+        && colIndex === game.lastTile.col
       ) {
         cells[cellIndex].classList.add('field-cell--new');
       }
@@ -69,6 +69,10 @@ function renderBoard() {
 }
 
 document.addEventListener('keydown', (e) => {
+  if (!arrowKeys.includes(e.key)) {
+    return;
+  }
+
   if (game.getStatus() === 'idle') {
     game.start();
     messageStart.classList.add('hidden');

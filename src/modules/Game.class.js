@@ -1,4 +1,3 @@
-'use strict';
 
 /**
  * This class represents the game.
@@ -236,7 +235,9 @@ class Game {
     this.board.forEach((row, rowIndex) => {
       row.forEach((cell, colIndex) => {
         if (cell === 0) {
-          emptyCells.push({ row: rowIndex, col: colIndex });
+          emptyCells.push({
+            row: rowIndex, col: colIndex,
+          });
         }
       });
     });
@@ -259,6 +260,10 @@ class Game {
   }
 
   checkLose() {
+    if (this.status !== 'playing') {
+      return;
+    }
+
     let canMove = false;
 
     this.board.forEach((row, rowIndex) => {
@@ -272,8 +277,8 @@ class Game {
         }
 
         if (
-          this.board[rowIndex + 1] &&
-          cell === this.board[rowIndex + 1][colIndex]
+          this.board[rowIndex + 1]
+          && cell === this.board[rowIndex + 1][colIndex]
         ) {
           canMove = true;
         }
