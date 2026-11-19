@@ -15,12 +15,6 @@ Slide the tiles, merge equal numbers and try to reach the **2048** tile!
 
 ---
 
-## 🎨 Design Reference
-
-[Figma design](DESIGN_LINK)
-
----
-
 ## 🛠 Technologies Used
 
 | Category | Tools |
